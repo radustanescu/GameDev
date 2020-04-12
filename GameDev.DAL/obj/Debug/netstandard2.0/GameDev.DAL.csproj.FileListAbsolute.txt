@@ -1,0 +1,12 @@
+D:\Game dev\GameDev\GameDev.DAL\bin\Debug\netstandard2.0\GameDev.DAL.deps.json
+D:\Game dev\GameDev\GameDev.DAL\bin\Debug\netstandard2.0\GameDev.DAL.dll
+D:\Game dev\GameDev\GameDev.DAL\bin\Debug\netstandard2.0\GameDev.DAL.pdb
+D:\Game dev\GameDev\GameDev.DAL\bin\Debug\netstandard2.0\GameDev.DM.dll
+D:\Game dev\GameDev\GameDev.DAL\bin\Debug\netstandard2.0\GameDev.DM.pdb
+D:\Game dev\GameDev\GameDev.DAL\obj\Debug\netstandard2.0\GameDev.DAL.csprojAssemblyReference.cache
+D:\Game dev\GameDev\GameDev.DAL\obj\Debug\netstandard2.0\GameDev.DAL.csproj.CoreCompileInputs.cache
+D:\Game dev\GameDev\GameDev.DAL\obj\Debug\netstandard2.0\GameDev.DAL.AssemblyInfoInputs.cache
+D:\Game dev\GameDev\GameDev.DAL\obj\Debug\netstandard2.0\GameDev.DAL.AssemblyInfo.cs
+D:\Game dev\GameDev\GameDev.DAL\obj\Debug\netstandard2.0\GameDev.DAL.csproj.CopyComplete
+D:\Game dev\GameDev\GameDev.DAL\obj\Debug\netstandard2.0\GameDev.DAL.dll
+D:\Game dev\GameDev\GameDev.DAL\obj\Debug\netstandard2.0\GameDev.DAL.pdb
