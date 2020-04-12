@@ -51,6 +51,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AccountRepository.cs" />
+    <Compile Include="Attribute.cs">
+      <DependentUpon>GameDev.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Character.cs">
+      <DependentUpon>GameDev.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CharacterAttribute.cs">
+      <DependentUpon>GameDev.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Character\ClassRepository.cs" />
+    <Compile Include="Class.cs">
+      <DependentUpon>GameDev.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClassAttribute.cs">
+      <DependentUpon>GameDev.tt</DependentUpon>
+    </Compile>
     <Compile Include="GameDev.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

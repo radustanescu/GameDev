@@ -12,6 +12,9 @@ namespace GameDev.WEB.Controllers.Account
 {
     public class AccountController : Controller
     {
+        private readonly SecurityService securityService = new SecurityService();
+        private readonly AccountService accountService = new AccountService();
+
         public ActionResult Login()
         {
             return View("Login");
@@ -23,9 +26,6 @@ namespace GameDev.WEB.Controllers.Account
         {
             if (!ModelState.IsValid)
                 return View("Login", loginModel);
-
-            SecurityService securityService = new SecurityService();
-            AccountService accountService = new AccountService();
 
             try
             {
@@ -64,7 +64,6 @@ namespace GameDev.WEB.Controllers.Account
 
             try
             {
-                AccountService accountService = new AccountService();
                 bool result = accountService.Register(registerModel);
 
                 return Login();

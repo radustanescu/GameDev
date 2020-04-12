@@ -12,5 +12,58 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Attributes">
+      <EntityTypeMapping TypeName="GameDevModel.Attribute">
+        <MappingFragment StoreEntitySet="Attributes">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+          <ScalarProperty Name="AttributeID" ColumnName="AttributeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CharacterAttributes">
+      <EntityTypeMapping TypeName="GameDevModel.CharacterAttribute">
+        <MappingFragment StoreEntitySet="CharacterAttributes">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="AttributeID" ColumnName="AttributeID" />
+          <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+          <ScalarProperty Name="CharacterAttributeID" ColumnName="CharacterAttributeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Characters">
+      <EntityTypeMapping TypeName="GameDevModel.Character">
+        <MappingFragment StoreEntitySet="Characters">
+          <ScalarProperty Name="Energy" ColumnName="Energy" />
+          <ScalarProperty Name="GuildID" ColumnName="GuildID" />
+          <ScalarProperty Name="Gems" ColumnName="Gems" />
+          <ScalarProperty Name="Gold" ColumnName="Gold" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassAttributes">
+      <EntityTypeMapping TypeName="GameDevModel.ClassAttribute">
+        <MappingFragment StoreEntitySet="ClassAttributes">
+          <ScalarProperty Name="IncrementValue" ColumnName="IncrementValue" />
+          <ScalarProperty Name="InitialValue" ColumnName="InitialValue" />
+          <ScalarProperty Name="AttributeID" ColumnName="AttributeID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="ClassAttributeID" ColumnName="ClassAttributeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="GameDevModel.Class">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

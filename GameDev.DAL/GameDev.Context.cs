@@ -26,5 +26,10 @@ namespace GameDev.DAL
         }
     
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Attribute> Attributes { get; set; }
+        public virtual DbSet<CharacterAttribute> CharacterAttributes { get; set; }
+        public virtual DbSet<Character> Characters { get; set; }
+        public virtual DbSet<ClassAttribute> ClassAttributes { get; set; }
+        public virtual DbSet<Class> Classes { get; set; }
     }
 }

@@ -2,6 +2,27 @@
 <Schema Namespace="GameDevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="GameDevEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Users" EntityType="GameDevModel.User" />
+    <EntitySet Name="Attributes" EntityType="GameDevModel.Attribute" />
+    <EntitySet Name="CharacterAttributes" EntityType="GameDevModel.CharacterAttribute" />
+    <EntitySet Name="Characters" EntityType="GameDevModel.Character" />
+    <EntitySet Name="ClassAttributes" EntityType="GameDevModel.ClassAttribute" />
+    <EntitySet Name="Classes" EntityType="GameDevModel.Class" />
+    <AssociationSet Name="FK_CharacterAttributes_Characters" Association="GameDevModel.FK_CharacterAttributes_Characters">
+      <End Role="Attribute" EntitySet="Attributes" />
+      <End Role="CharacterAttribute" EntitySet="CharacterAttributes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassAttribute_Attributes" Association="GameDevModel.FK_ClassAttribute_Attributes">
+      <End Role="Attribute" EntitySet="Attributes" />
+      <End Role="ClassAttribute" EntitySet="ClassAttributes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Characters_Users" Association="GameDevModel.FK_Characters_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Character" EntitySet="Characters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassAttribute_Classes" Association="GameDevModel.FK_ClassAttribute_Classes">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="ClassAttribute" EntitySet="ClassAttributes" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="User">
     <Key>
@@ -12,5 +33,109 @@
     <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="HASH" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SALT" Type="Binary" Nullable="false" MaxLength="512" FixedLength="false" />
+    <NavigationProperty Name="Characters" Relationship="GameDevModel.FK_Characters_Users" FromRole="User" ToRole="Character" />
   </EntityType>
+  <EntityType Name="Attribute">
+    <Key>
+      <PropertyRef Name="AttributeID" />
+    </Key>
+    <Property Name="AttributeID" Type="Guid" Nullable="false" />
+    <Property Name="AttributeName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CharacterAttributes" Relationship="GameDevModel.FK_CharacterAttributes_Characters" FromRole="Attribute" ToRole="CharacterAttribute" />
+    <NavigationProperty Name="ClassAttributes" Relationship="GameDevModel.FK_ClassAttribute_Attributes" FromRole="Attribute" ToRole="ClassAttribute" />
+  </EntityType>
+  <EntityType Name="CharacterAttribute">
+    <Key>
+      <PropertyRef Name="CharacterAttributeID" />
+    </Key>
+    <Property Name="CharacterAttributeID" Type="Guid" Nullable="false" />
+    <Property Name="CharacterID" Type="Guid" Nullable="false" />
+    <Property Name="AttributeID" Type="Guid" Nullable="false" />
+    <Property Name="Value" Type="Int32" />
+    <NavigationProperty Name="Attribute" Relationship="GameDevModel.FK_CharacterAttributes_Characters" FromRole="CharacterAttribute" ToRole="Attribute" />
+  </EntityType>
+  <EntityType Name="Character">
+    <Key>
+      <PropertyRef Name="CharacterID" />
+    </Key>
+    <Property Name="CharacterID" Type="Guid" Nullable="false" />
+    <Property Name="ClassID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="Level" Type="Int32" Nullable="false" />
+    <Property Name="Gold" Type="Int32" Nullable="false" />
+    <Property Name="Gems" Type="Int32" Nullable="false" />
+    <Property Name="GuildID" Type="Guid" />
+    <Property Name="Energy" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="GameDevModel.FK_Characters_Users" FromRole="Character" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ClassAttribute">
+    <Key>
+      <PropertyRef Name="ClassAttributeID" />
+    </Key>
+    <Property Name="ClassAttributeID" Type="Guid" Nullable="false" />
+    <Property Name="ClassID" Type="Guid" Nullable="false" />
+    <Property Name="AttributeID" Type="Guid" Nullable="false" />
+    <Property Name="InitialValue" Type="Int32" />
+    <Property Name="IncrementValue" Type="Int32" />
+    <NavigationProperty Name="Attribute" Relationship="GameDevModel.FK_ClassAttribute_Attributes" FromRole="ClassAttribute" ToRole="Attribute" />
+    <NavigationProperty Name="Class" Relationship="GameDevModel.FK_ClassAttribute_Classes" FromRole="ClassAttribute" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="ClassID" />
+    </Key>
+    <Property Name="ClassID" Type="Guid" Nullable="false" />
+    <Property Name="ClassName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ClassAttributes" Relationship="GameDevModel.FK_ClassAttribute_Classes" FromRole="Class" ToRole="ClassAttribute" />
+  </EntityType>
+  <Association Name="FK_CharacterAttributes_Characters">
+    <End Type="GameDevModel.Attribute" Role="Attribute" Multiplicity="1" />
+    <End Type="GameDevModel.CharacterAttribute" Role="CharacterAttribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attribute">
+        <PropertyRef Name="AttributeID" />
+      </Principal>
+      <Dependent Role="CharacterAttribute">
+        <PropertyRef Name="AttributeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassAttribute_Attributes">
+    <End Type="GameDevModel.Attribute" Role="Attribute" Multiplicity="1" />
+    <End Type="GameDevModel.ClassAttribute" Role="ClassAttribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attribute">
+        <PropertyRef Name="AttributeID" />
+      </Principal>
+      <Dependent Role="ClassAttribute">
+        <PropertyRef Name="AttributeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Characters_Users">
+    <End Type="GameDevModel.User" Role="User" Multiplicity="1" />
+    <End Type="GameDevModel.Character" Role="Character" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Character">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassAttribute_Classes">
+    <End Type="GameDevModel.Class" Role="Class" Multiplicity="1" />
+    <End Type="GameDevModel.ClassAttribute" Role="ClassAttribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="ClassID" />
+      </Principal>
+      <Dependent Role="ClassAttribute">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

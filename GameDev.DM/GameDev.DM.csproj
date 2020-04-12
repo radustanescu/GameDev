@@ -45,6 +45,7 @@
     <Compile Include="Account\LoginModel.cs" />
     <Compile Include="Account\RegisterModel.cs" />
     <Compile Include="Account\UserModel.cs" />
+    <Compile Include="Character\Class.cs" />
     <Compile Include="Error\HandledException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

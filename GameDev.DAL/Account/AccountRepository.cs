@@ -42,7 +42,7 @@ namespace GameDev.DAL.Account
             return userModel;
         }
 
-        public bool RegisterUser(string userName, string email, string HASH, byte[] SALT)
+        public Guid? RegisterUser(string userName, string email, string HASH, byte[] SALT)
         {
             using (GameDevEntities db = new GameDevEntities())
             {
@@ -59,11 +59,11 @@ namespace GameDev.DAL.Account
                     db.Users.Add(newUser);
                     db.SaveChanges();
 
-                    return true;
+                    return newUser.UserID;
                 }
                 catch (Exception ex)
                 {
-                    return false;
+                    return null;
                 }
             }
         }

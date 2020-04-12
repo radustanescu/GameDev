@@ -10,6 +10,7 @@ namespace GameDev.BL.Account
     {
         private AccountRepository accountRepository = new AccountRepository();
         private SecurityService securityService = new SecurityService();
+        private CharacterService characterService = new CharacterService();
 
         public LoginModel CheckLogin(string userName, string password)
         {
@@ -61,7 +62,7 @@ namespace GameDev.BL.Account
 
                 byte[] SALT = securityService.Get_SALT();
                 string HASH = securityService.Get_HASH_SHA512(registerModel.Password, registerModel.UserName, SALT);
-                accountRepository.RegisterUser(registerModel.UserName, registerModel.Email, HASH, SALT);
+                Guid? userID = accountRepository.RegisterUser(registerModel.UserName, registerModel.Email, HASH, SALT);
 
                 return true;
             }

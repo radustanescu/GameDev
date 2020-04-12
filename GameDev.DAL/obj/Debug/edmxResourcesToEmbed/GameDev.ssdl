@@ -1,5 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GameDevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attributes">
+    <Key>
+      <PropertyRef Name="AttributeID" />
+    </Key>
+    <Property Name="AttributeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AttributeName" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CharacterAttributes">
+    <Key>
+      <PropertyRef Name="CharacterAttributeID" />
+    </Key>
+    <Property Name="CharacterAttributeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CharacterID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AttributeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Value" Type="int" />
+  </EntityType>
+  <EntityType Name="Characters">
+    <Key>
+      <PropertyRef Name="CharacterID" />
+    </Key>
+    <Property Name="CharacterID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ClassID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="Gold" Type="int" Nullable="false" />
+    <Property Name="Gems" Type="int" Nullable="false" />
+    <Property Name="GuildID" Type="uniqueidentifier" />
+    <Property Name="Energy" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClassAttributes">
+    <Key>
+      <PropertyRef Name="ClassAttributeID" />
+    </Key>
+    <Property Name="ClassAttributeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ClassID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AttributeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InitialValue" Type="int" />
+    <Property Name="IncrementValue" Type="int" />
+  </EntityType>
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="ClassID" />
+    </Key>
+    <Property Name="ClassID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="512" />
+  </EntityType>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="UserID" />
@@ -10,7 +58,76 @@
     <Property Name="HASH" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SALT" Type="varbinary" MaxLength="512" Nullable="false" />
   </EntityType>
+  <Association Name="FK_CharacterAttributes_Characters">
+    <End Role="Attributes" Type="Self.Attributes" Multiplicity="1" />
+    <End Role="CharacterAttributes" Type="Self.CharacterAttributes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attributes">
+        <PropertyRef Name="AttributeID" />
+      </Principal>
+      <Dependent Role="CharacterAttributes">
+        <PropertyRef Name="AttributeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Characters_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Characters" Type="Self.Characters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Characters">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassAttribute_Attributes">
+    <End Role="Attributes" Type="Self.Attributes" Multiplicity="1" />
+    <End Role="ClassAttributes" Type="Self.ClassAttributes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attributes">
+        <PropertyRef Name="AttributeID" />
+      </Principal>
+      <Dependent Role="ClassAttributes">
+        <PropertyRef Name="AttributeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClassAttribute_Classes">
+    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+    <End Role="ClassAttributes" Type="Self.ClassAttributes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="ClassID" />
+      </Principal>
+      <Dependent Role="ClassAttributes">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="GameDevModelStoreContainer">
+    <EntitySet Name="Attributes" EntityType="Self.Attributes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CharacterAttributes" EntityType="Self.CharacterAttributes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Characters" EntityType="Self.Characters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassAttributes" EntityType="Self.ClassAttributes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CharacterAttributes_Characters" Association="Self.FK_CharacterAttributes_Characters">
+      <End Role="Attributes" EntitySet="Attributes" />
+      <End Role="CharacterAttributes" EntitySet="CharacterAttributes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Characters_Users" Association="Self.FK_Characters_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Characters" EntitySet="Characters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassAttribute_Attributes" Association="Self.FK_ClassAttribute_Attributes">
+      <End Role="Attributes" EntitySet="Attributes" />
+      <End Role="ClassAttributes" EntitySet="ClassAttributes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClassAttribute_Classes" Association="Self.FK_ClassAttribute_Classes">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="ClassAttributes" EntitySet="ClassAttributes" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

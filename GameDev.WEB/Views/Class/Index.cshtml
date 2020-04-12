@@ -1,0 +1,12 @@
+﻿@model List<GameDev.DM.Character.Class>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (GameDev.DM.Character.Class item in Model)
+{
+    <div>@item.ClassName</div><br />
+    <div>@item.Description</div><br />
+}
