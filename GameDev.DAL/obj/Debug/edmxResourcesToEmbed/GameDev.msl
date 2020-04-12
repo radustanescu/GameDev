@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GameDevModelStoreContainer" CdmEntityContainer="GameDevEntities">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="GameDevModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="SALT" ColumnName="SALT" />
+          <ScalarProperty Name="HASH" ColumnName="HASH" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,6 @@
+D:\Game dev\GameDev\GameDev.DM\bin\Debug\GameDev.DM.dll
+D:\Game dev\GameDev\GameDev.DM\bin\Debug\GameDev.DM.pdb
+D:\Game dev\GameDev\GameDev.DM\obj\Debug\GameDev.DM.csprojAssemblyReference.cache
+D:\Game dev\GameDev\GameDev.DM\obj\Debug\GameDev.DM.csproj.CoreCompileInputs.cache
+D:\Game dev\GameDev\GameDev.DM\obj\Debug\GameDev.DM.dll
+D:\Game dev\GameDev\GameDev.DM\obj\Debug\GameDev.DM.pdb

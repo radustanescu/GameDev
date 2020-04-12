@@ -1,0 +1,30 @@
+﻿@model GameDev.DM.Account.LoginModel
+
+    @{
+        ViewBag.Title = "Login";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(el => el.ReturnURL)
+
+        <h1>Login Functionality In MVC</h1>
+        <div>
+
+            @if (TempData["ErrorMSG"] != null)
+            {
+                <label style="color:maroon;"> @TempData["ErrorMSG"] </label>
+                <br /><br />
+            }
+
+            @Html.TextBoxFor(el => el.UserName, new { @placeholder = "Username" })
+            <br /> <br />
+            @Html.PasswordFor(el => el.Password, new { @placeholder = "Password" })
+            <br /> <br />
+            @Html.CheckBoxFor(el => el.RememberMe) Remember ME
+            <br /> <br />
+            <button type="submit">Login</button>
+        </div>
+    }

@@ -1,9 +1,0 @@
-D:\Game dev\GameDev\GameDev.DM\bin\Debug\netstandard2.0\GameDev.DM.deps.json
-D:\Game dev\GameDev\GameDev.DM\bin\Debug\netstandard2.0\GameDev.DM.dll
-D:\Game dev\GameDev\GameDev.DM\bin\Debug\netstandard2.0\GameDev.DM.pdb
-D:\Game dev\GameDev\GameDev.DM\obj\Debug\netstandard2.0\GameDev.DM.csprojAssemblyReference.cache
-D:\Game dev\GameDev\GameDev.DM\obj\Debug\netstandard2.0\GameDev.DM.csproj.CoreCompileInputs.cache
-D:\Game dev\GameDev\GameDev.DM\obj\Debug\netstandard2.0\GameDev.DM.AssemblyInfoInputs.cache
-D:\Game dev\GameDev\GameDev.DM\obj\Debug\netstandard2.0\GameDev.DM.AssemblyInfo.cs
-D:\Game dev\GameDev\GameDev.DM\obj\Debug\netstandard2.0\GameDev.DM.dll
-D:\Game dev\GameDev\GameDev.DM\obj\Debug\netstandard2.0\GameDev.DM.pdb

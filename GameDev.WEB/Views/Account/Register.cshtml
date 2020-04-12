@@ -1,0 +1,35 @@
+﻿@model GameDev.DM.Account.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <h1>Register Functionality In MVC</h1>
+    <div>
+
+        @if (TempData["ErrorMSG"] != null)
+        {
+            <label style="color:maroon;"> @TempData["ErrorMSG"] </label>
+            <br /><br />
+        }
+
+        @Html.TextBoxFor(el => el.UserName, new { @placeholder = "Username" })
+        @Html.ValidationMessageFor(el => el.UserName)
+        <br /> <br />
+        @Html.PasswordFor(el => el.Password, new { @placeholder = "Password" })
+        @Html.ValidationMessageFor(el => el.Password)
+        <br /> <br />
+        @Html.PasswordFor(el => el.ConfirmedPassord, new { @placeholder = "Confirm password" })
+        @Html.ValidationMessageFor(el => el.ConfirmedPassord)
+        <br /> <br />
+        @Html.TextBoxFor(el => el.Email, new { @placeholder = "Email" })
+        @Html.ValidationMessageFor(el => el.Email)
+        <br /> <br />
+        <button type="submit">Login</button>
+    </div>
+}

@@ -1,0 +1,14 @@
+D:\Game dev\GameDev\GameDev.BL\bin\Debug\GameDev.BL.dll
+D:\Game dev\GameDev\GameDev.BL\bin\Debug\GameDev.BL.pdb
+D:\Game dev\GameDev\GameDev.BL\obj\Debug\GameDev.BL.csprojAssemblyReference.cache
+D:\Game dev\GameDev\GameDev.BL\obj\Debug\GameDev.BL.csproj.CoreCompileInputs.cache
+D:\Game dev\GameDev\GameDev.BL\obj\Debug\GameDev.BL.dll
+D:\Game dev\GameDev\GameDev.BL\obj\Debug\GameDev.BL.pdb
+D:\Game dev\GameDev\GameDev.BL\bin\Debug\GameDev.DAL.dll
+D:\Game dev\GameDev\GameDev.BL\bin\Debug\GameDev.DM.dll
+D:\Game dev\GameDev\GameDev.BL\bin\Debug\EntityFramework.dll
+D:\Game dev\GameDev\GameDev.BL\bin\Debug\GameDev.DAL.pdb
+D:\Game dev\GameDev\GameDev.BL\bin\Debug\GameDev.DAL.dll.config
+D:\Game dev\GameDev\GameDev.BL\bin\Debug\GameDev.DM.pdb
+D:\Game dev\GameDev\GameDev.BL\bin\Debug\EntityFramework.xml
+D:\Game dev\GameDev\GameDev.BL\obj\Debug\GameDev.BL.csproj.CopyComplete
