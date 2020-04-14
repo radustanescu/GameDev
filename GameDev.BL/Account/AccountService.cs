@@ -8,9 +8,9 @@ namespace GameDev.BL.Account
 {
     public class AccountService
     {
-        private AccountRepository accountRepository = new AccountRepository();
-        private SecurityService securityService = new SecurityService();
-        private CharacterService characterService = new CharacterService();
+        private readonly AccountRepository accountRepository = new AccountRepository();
+        private readonly SecurityService securityService = new SecurityService();
+        private readonly CharacterService characterService = new CharacterService();
 
         public LoginModel CheckLogin(string userName, string password)
         {
@@ -43,7 +43,7 @@ namespace GameDev.BL.Account
             return loginModel;
         }
 
-        public bool Register(RegisterModel registerModel)
+        public bool RegisterUser(RegisterModel registerModel)
         {
             try
             {
@@ -69,6 +69,18 @@ namespace GameDev.BL.Account
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public bool HasCharacter(Guid userID)
+        {
+            try
+            {
+                return accountRepository.HasCharacter(userID);
+            }
+            catch (HandledException ex)
+            {
+                throw ex;
             }
         }
     }

@@ -1,0 +1,11 @@
+﻿.class-select-default {
+    border: 2px solid black;
+    text-align: center;
+    cursor: pointer;
+}
+
+.class-selected {
+    border: 2px solid red;
+    text-align: center;
+    cursor: pointer;
+}

@@ -34,6 +34,7 @@
     <Property Name="HASH" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SALT" Type="Binary" Nullable="false" MaxLength="512" FixedLength="false" />
     <NavigationProperty Name="Characters" Relationship="GameDevModel.FK_Characters_Users" FromRole="User" ToRole="Character" />
+    <Property Name="HasCharacter" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Attribute">
     <Key>

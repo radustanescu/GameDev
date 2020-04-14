@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="GameDevModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="HasCharacter" ColumnName="HasCharacter" />
           <ScalarProperty Name="SALT" ColumnName="SALT" />
           <ScalarProperty Name="HASH" ColumnName="HASH" />
           <ScalarProperty Name="Email" ColumnName="Email" />

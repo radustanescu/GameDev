@@ -7,6 +7,7 @@ using GameDev.BL.Utils;
 using System.Web.Security;
 using System;
 using GameDev.DM.Error;
+using System.Web;
 
 namespace GameDev.WEB.Controllers.Account
 {
@@ -30,10 +31,19 @@ namespace GameDev.WEB.Controllers.Account
             try
             {
                 LoginModel response = accountService.CheckLogin(loginModel.UserName, loginModel.Password);
+                bool hasCharacter = accountService.HasCharacter(response.UserID);
 
                 if (response.IsLogin)
                 {
                     SignInRemember(response.UserName, loginModel.RememberMe);
+                    HttpCookie cookie = new HttpCookie("LoggedInUserID")
+                    {
+                        Value = response.UserID.ToString()
+                    };
+                    HttpContext.Response.SetCookie(cookie);
+
+                    if (hasCharacter == false)
+                        loginModel.ReturnURL = "~/Class/Index";
 
                     return RedirectToLocal(loginModel.ReturnURL);
                 }
@@ -64,7 +74,7 @@ namespace GameDev.WEB.Controllers.Account
 
             try
             {
-                bool result = accountService.Register(registerModel);
+                bool result = accountService.RegisterUser(registerModel);
 
                 return Login();
             }

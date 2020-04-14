@@ -62,6 +62,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="HASH" Type="nvarchar(max)" Nullable="false" />
           <Property Name="SALT" Type="varbinary" MaxLength="512" Nullable="false" />
+          <Property Name="HasCharacter" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_CharacterAttributes_Characters">
           <End Role="Attributes" Type="Self.Attributes" Multiplicity="1" />
@@ -173,6 +174,7 @@
           <Property Name="HASH" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SALT" Type="Binary" Nullable="false" MaxLength="512" FixedLength="false" />
           <NavigationProperty Name="Characters" Relationship="GameDevModel.FK_Characters_Users" FromRole="User" ToRole="Character" />
+          <Property Name="HasCharacter" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Attribute">
           <Key>
@@ -286,6 +288,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="GameDevModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="HasCharacter" ColumnName="HasCharacter" />
                 <ScalarProperty Name="SALT" ColumnName="SALT" />
                 <ScalarProperty Name="HASH" ColumnName="HASH" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

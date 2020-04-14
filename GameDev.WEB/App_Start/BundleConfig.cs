@@ -25,6 +25,12 @@ namespace GameDev.WEB
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Class").Include(
+                      "~/Content/Class/class.css"));
+            bundles.Add(new ScriptBundle("~/bundles/Class").Include(
+                      "~/Scripts/General/Proxy.js",
+                      "~/Scripts/Class/class.js"));
         }
     }
 }

@@ -57,6 +57,7 @@
     <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="HASH" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SALT" Type="varbinary" MaxLength="512" Nullable="false" />
+    <Property Name="HasCharacter" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="FK_CharacterAttributes_Characters">
     <End Role="Attributes" Type="Self.Attributes" Multiplicity="1" />

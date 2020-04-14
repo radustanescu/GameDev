@@ -5,8 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach (GameDev.DM.Character.Class item in Model)
-{
-    <div>@item.ClassName</div><br />
-    <div>@item.Description</div><br />
-}
+@Styles.Render("~/Content/Class")
+
+<div class="row">
+    @foreach (GameDev.DM.Character.Class item in Model)
+    {
+        <div class="col-md-3 class-select-default class-select" data-class-id="@item.ClassID">
+            <div>@item.ClassName</div>
+            <div>@item.Description</div>
+        </div>
+    }
+</div>
+
+<button type="button" class="btn btn-choose" value="Choose">Choose</button>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/Class")

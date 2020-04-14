@@ -1,4 +1,5 @@
 ﻿using GameDev.DM.Account;
+using GameDev.DM.Error;
 using System;
 using System.Linq;
 
@@ -54,7 +55,8 @@ namespace GameDev.DAL.Account
                         HASH = HASH,
                         SALT = SALT,
                         UserName = userName,
-                        UserID = Guid.NewGuid()
+                        UserID = Guid.NewGuid(),
+                        HasCharacter = false
                     };
                     db.Users.Add(newUser);
                     db.SaveChanges();
@@ -65,6 +67,20 @@ namespace GameDev.DAL.Account
                 {
                     return null;
                 }
+            }
+        }
+
+        public bool HasCharacter(Guid userID)
+        {
+            using (GameDevEntities db = new GameDevEntities())
+            {
+                User user = db.Users.Where(el => el.UserID == userID).FirstOrDefault();
+                if (user == null)
+                {
+                    throw new HandledException("Invalid UserID!");
+                }
+
+                return user.HasCharacter;
             }
         }
     }

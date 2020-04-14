@@ -25,6 +25,7 @@ namespace GameDev.DAL
         public string Email { get; set; }
         public string HASH { get; set; }
         public byte[] SALT { get; set; }
+        public bool HasCharacter { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Character> Characters { get; set; }
